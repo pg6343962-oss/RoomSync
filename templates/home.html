@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoomSync - Find Your Perfect Roommate</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #172554;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .hero {
+            padding: 90px 0;
+            background: linear-gradient(
+                135deg,
+                #eef7ff,
+                #ffffff
+            );
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: #0f9d8a;
+        }
+
+        .hero-text {
+            color: #64748b;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .btn-primary-custom {
+            background-color: #0f9d8a;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #087f70;
+            color: white;
+        }
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        footer {
+            background-color: #172554;
+            color: white;
+            padding: 35px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg bg-white py-3">
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+             Room<span style="color:#0f9d8a;">Sync</span>
+        </a>
+
+        <div>
+            <a href="{% url 'register' %}" class="btn btn-outline-secondary me-2">
+                Login
+            </a>
+
+            <a href="{% url 'login' %}" class="btn btn-primary-custom">
+                Sign Up
+            </a>
+            <ul class="navbar-nav ms-auto">
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'dashboard' %}">
+            Dashboard
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'find_roommates' %}">
+            Find Roommates
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'sent_requests' %}">
+            Sent Requests
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'received_requests' %}">
+            Received Requests
+        </a>
+    </li>
+
+</ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h1>
+                    Find a Roommate
+                    <span>Who Fits Your Lifestyle</span>
+                </h1>
+
+                <p class="hero-text mt-4">
+                    Find compatible roommates based on your
+                    location, budget and everyday lifestyle preferences.
+                </p>
+
+                <a href="#" class="btn btn-primary-custom mt-3">
+                    Find My Match →
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🏠 👥
+                    </div>
+
+                    <h3>Smart Roommate Matching</h3>
+
+                    <p class="text-muted">
+                        Discover roommates who match your
+                        lifestyle and preferences.
+                    </p>
+
+                    <div class="mt-4">
+
+                        <span class="badge bg-success">
+                            92% Compatible
+                        </span>
+
+                        <span class="badge bg-light text-dark">
+                            Same Budget
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Search -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="search-box">
+
+            <h3 class="mb-4">
+                Find a Roommate
+            </h3>
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="City or Location"
+                    >
+                </div>
+
+                <div class="col-md-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Max Budget"
+                    >
+                </div>
+
+                <div class="col-md-3">
+
+                    <select class="form-select">
+
+                        <option selected>
+                            Room Type
+                        </option>
+
+                        <option>
+                            Private Room
+                        </option>
+
+                        <option>
+                            Shared Room
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button class="btn btn-primary-custom w-100">
+                        Search
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- How It Works -->
+
+<section class="section bg-white">
+
+    <div class="container text-center">
+
+        <h2 class="fw-bold">
+            How RoomSync Works
+        </h2>
+
+        <p class="text-muted mb-5">
+            Finding the right roommate is simple.
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        👤
+                    </div>
+
+                    <h4>Create Your Profile</h4>
+
+                    <p class="text-muted">
+                        Tell us about yourself and your
+                        lifestyle preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚙️
+                    </div>
+
+                    <h4>Set Your Preferences</h4>
+
+                    <p class="text-muted">
+                        Choose your budget, location and
+                        roommate preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🤝
+                    </div>
+
+                    <h4>Find Your Match</h4>
+
+                    <p class="text-muted">
+                        Get compatible roommate recommendations.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Why RoomSync -->
+
+<section class="section">
+
+    <div class="container text-center">
+
+        <h2 class="fw-bold mb-5">
+            Why Choose RoomSync?
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h5>Smart Matching</h5>
+                    <p class="text-muted">
+                        Find compatible roommates.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h5>Budget Based</h5>
+                    <p class="text-muted">
+                        Search within your budget.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h5>Location Search</h5>
+                    <p class="text-muted">
+                        Find roommates near you.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h5>Easy Connect</h5>
+                    <p class="text-muted">
+                        Connect with your matches.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="section text-center bg-white">
+
+    <div class="container">
+
+        <h2 class="fw-bold">
+            Ready to Find Your Roommate?
+        </h2>
+
+        <p class="text-muted mt-3">
+            Create your profile and discover compatible roommates.
+        </p>
+
+        <a href="#" class="btn btn-primary-custom mt-3">
+            Get Started →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <h4>RoomSync</h4>
+
+        <p class="mb-0">
+            Find a roommate who fits your lifestyle.
+        </p>
+
+        <small>
+            © 2026 RoomSync. All rights reserved.
+        </small>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

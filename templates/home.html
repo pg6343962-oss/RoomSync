@@ -100,45 +100,54 @@
 <nav class="navbar navbar-expand-lg bg-white py-3">
     <div class="container">
 
-        <a class="navbar-brand" href="/">
-             Room<span style="color:#0f9d8a;">Sync</span>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            Room<span style="color:#0f9d8a;">Sync</span>
         </a>
 
         <div>
-            <a href="{% url 'register' %}" class="btn btn-outline-secondary me-2">
+            <!-- LOGIN -->
+            <a href="{% url 'login' %}"
+               class="btn btn-outline-secondary me-2">
                 Login
             </a>
 
-            <a href="{% url 'login' %}" class="btn btn-primary-custom">
+            <!-- SIGN UP -->
+            <a href="{% url 'register' %}"
+               class="btn btn-primary-custom">
                 Sign Up
             </a>
-            <ul class="navbar-nav ms-auto">
 
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'dashboard' %}">
-            Dashboard
-        </a>
-    </li>
+            <ul class="navbar-nav ms-auto d-inline-flex flex-row">
 
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'find_roommates' %}">
-            Find Roommates
-        </a>
-    </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'dashboard' %}">
+                        Dashboard
+                    </a>
+                </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'sent_requests' %}">
-            Sent Requests
-        </a>
-    </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'find_roommates' %}">
+                        Find Roommates
+                    </a>
+                </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'received_requests' %}">
-            Received Requests
-        </a>
-    </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'sent_requests' %}">
+                        Sent Requests
+                    </a>
+                </li>
 
-</ul>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'received_requests' %}">
+                        Received Requests
+                    </a>
+                </li>
+
+            </ul>
         </div>
 
     </div>
@@ -165,7 +174,9 @@
                     location, budget and everyday lifestyle preferences.
                 </p>
 
-                <a href="#" class="btn btn-primary-custom mt-3">
+                <!-- FIND MY MATCH -->
+                <a href="{% url 'find_roommates' %}"
+                   class="btn btn-primary-custom mt-3">
                     Find My Match →
                 </a>
 
@@ -222,53 +233,73 @@
                 Find a Roommate
             </h3>
 
-            <div class="row g-3">
+            <!-- SEARCH FORM -->
+            <form method="GET"
+                  action="{% url 'find_roommates' %}">
 
-                <div class="col-md-4">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="City or Location"
-                    >
+                <div class="row g-3">
+
+                    <!-- LOCATION -->
+                    <div class="col-md-4">
+
+                        <input
+                            type="text"
+                            name="location"
+                            class="form-control"
+                            placeholder="City or Location"
+                        >
+
+                    </div>
+
+                    <!-- MAX BUDGET -->
+                    <div class="col-md-3">
+
+                        <input
+                            type="number"
+                            name="max_budget"
+                            class="form-control"
+                            placeholder="Max Budget"
+                        >
+
+                    </div>
+
+                    <!-- ROOM TYPE -->
+                    <div class="col-md-3">
+
+                        <select
+                            name="room_type"
+                            class="form-select">
+
+                            <option value="">
+                                Room Type
+                            </option>
+
+                            <option value="private">
+                                Private Room
+                            </option>
+
+                            <option value="shared">
+                                Shared Room
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- SEARCH BUTTON -->
+                    <div class="col-md-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary-custom w-100">
+                            Search
+                        </button>
+
+                    </div>
+
                 </div>
 
-                <div class="col-md-3">
-                    <input
-                        type="number"
-                        class="form-control"
-                        placeholder="Max Budget"
-                    >
-                </div>
-
-                <div class="col-md-3">
-
-                    <select class="form-select">
-
-                        <option selected>
-                            Room Type
-                        </option>
-
-                        <option>
-                            Private Room
-                        </option>
-
-                        <option>
-                            Shared Room
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div class="col-md-2">
-
-                    <button class="btn btn-primary-custom w-100">
-                        Search
-                    </button>
-
-                </div>
-
-            </div>
+            </form>
 
         </div>
 
@@ -295,59 +326,74 @@
 
             <div class="col-md-4">
 
-                <div class="feature-card">
+                <a href="{% url 'profile-setup' %}"
+                   class="text-decoration-none text-dark">
 
-                    <div class="feature-icon">
-                        👤
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            👤
+                        </div>
+
+                        <h4>Create Your Profile</h4>
+
+                        <p class="text-muted">
+                            Tell us about yourself and your
+                            lifestyle preferences.
+                        </p>
+
                     </div>
 
-                    <h4>Create Your Profile</h4>
-
-                    <p class="text-muted">
-                        Tell us about yourself and your
-                        lifestyle preferences.
-                    </p>
-
-                </div>
+                </a>
 
             </div>
 
 
             <div class="col-md-4">
 
-                <div class="feature-card">
+                <a href="{% url 'preference_setup' %}"
+                   class="text-decoration-none text-dark">
 
-                    <div class="feature-icon">
-                        ⚙️
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚙️
+                        </div>
+
+                        <h4>Set Your Preferences</h4>
+
+                        <p class="text-muted">
+                            Choose your budget, location and
+                            roommate preferences.
+                        </p>
+
                     </div>
 
-                    <h4>Set Your Preferences</h4>
-
-                    <p class="text-muted">
-                        Choose your budget, location and
-                        roommate preferences.
-                    </p>
-
-                </div>
+                </a>
 
             </div>
 
 
             <div class="col-md-4">
 
-                <div class="feature-card">
+                <a href="{% url 'find_roommates' %}"
+                   class="text-decoration-none text-dark">
 
-                    <div class="feature-icon">
-                        🤝
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🤝
+                        </div>
+
+                        <h4>Find Your Match</h4>
+
+                        <p class="text-muted">
+                            Get compatible roommate recommendations.
+                        </p>
+
                     </div>
 
-                    <h4>Find Your Match</h4>
-
-                    <p class="text-muted">
-                        Get compatible roommate recommendations.
-                    </p>
-
-                </div>
+                </a>
 
             </div>
 
@@ -371,43 +417,90 @@
         <div class="row g-4">
 
             <div class="col-md-3">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h5>Smart Matching</h5>
-                    <p class="text-muted">
-                        Find compatible roommates.
-                    </p>
-                </div>
+                <a href="{% url 'find_roommates' %}"
+                   class="text-decoration-none text-dark">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🎯
+                        </div>
+
+                        <h5>Smart Matching</h5>
+
+                        <p class="text-muted">
+                            Find compatible roommates.
+                        </p>
+
+                    </div>
+
+                </a>
             </div>
 
-            <div class="col-md-3">
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h5>Budget Based</h5>
-                    <p class="text-muted">
-                        Search within your budget.
-                    </p>
-                </div>
-            </div>
 
             <div class="col-md-3">
-                <div class="feature-card">
-                    <div class="feature-icon">📍</div>
-                    <h5>Location Search</h5>
-                    <p class="text-muted">
-                        Find roommates near you.
-                    </p>
-                </div>
+                <a href="{% url 'find_roommates' %}"
+                   class="text-decoration-none text-dark">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            💰
+                        </div>
+
+                        <h5>Budget Based</h5>
+
+                        <p class="text-muted">
+                            Search within your budget.
+                        </p>
+
+                    </div>
+
+                </a>
             </div>
 
+
             <div class="col-md-3">
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h5>Easy Connect</h5>
-                    <p class="text-muted">
-                        Connect with your matches.
-                    </p>
-                </div>
+                <a href="{% url 'find_roommates' %}"
+                   class="text-decoration-none text-dark">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            📍
+                        </div>
+
+                        <h5>Location Search</h5>
+
+                        <p class="text-muted">
+                            Find roommates near you.
+                        </p>
+
+                    </div>
+
+                </a>
+            </div>
+
+
+            <div class="col-md-3">
+                <a href="{% url 'sent_requests' %}"
+                   class="text-decoration-none text-dark">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            💬
+                        </div>
+
+                        <h5>Easy Connect</h5>
+
+                        <p class="text-muted">
+                            Connect with your matches.
+                        </p>
+
+                    </div>
+
+                </a>
             </div>
 
         </div>
@@ -431,7 +524,9 @@
             Create your profile and discover compatible roommates.
         </p>
 
-        <a href="#" class="btn btn-primary-custom mt-3">
+        <!-- GET STARTED -->
+        <a href="{% url 'register' %}"
+           class="btn btn-primary-custom mt-3">
             Get Started →
         </a>
 

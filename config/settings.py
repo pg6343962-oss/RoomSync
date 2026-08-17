@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+=(j^goy)&g=zb636yl)_tv6gm&@ys(4dyy1o(&&h4_!y*x(*2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["roomsync-5z7g.onrender.com"]
 
 
 # Application definition
@@ -135,7 +135,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/ 'media'
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.onrender.com",
+    "https://roomsync-5z7g.onrender.com",
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

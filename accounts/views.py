@@ -199,6 +199,9 @@ def find_roommates(request):
     max_budget = request.GET.get('max_budget', '').strip()
 
     roommates = []
+    print("TOTAL PROFILES:", Profile.objects.count())
+    print("TOTAL PREFERENCES:", Preference.objects.count())
+ 
 
     for profile in profiles:
 
